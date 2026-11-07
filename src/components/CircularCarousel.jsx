@@ -261,7 +261,7 @@ const CircularCarousel = ({
   const measureRef = useRef(() => {});
   const activeRef = useRef(startIndex);
   const [active, setActive] = useState(startIndex);
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(true);
   const [dragging, setDragging] = useState(false);
   const readyRef = useRef(false);
   readyRef.current = ready;
@@ -334,51 +334,41 @@ const CircularCarousel = ({
   const sourcesKey = incoming.map(item => item.src).join('|');
 
   useEffect(() => {
-    let cancelled = false;
     const next = incomingRef.current;
     const smooth = readyRef.current && next.length === listRef.current.length;
-    if (!smooth) {
-      setReady(false);
-      setLeaving(null);
-      setList(next);
-    }
-    const sources = next.slice(0, 16).map(item => item.previewSrc || item.src);
-    const load = src =>
-      new Promise(resolve => {
-        const image = new Image();
-        image.decoding = 'async';
-        image.onload = () => (image.decode ? image.decode().then(resolve, resolve) : resolve());
-        image.onerror = resolve;
-        image.src = src;
-      });
-    const timeout = new Promise(resolve => setTimeout(resolve, 800));
-    Promise.race([Promise.all(sources.map(load)), timeout]).then(() => {
-      if (cancelled) return;
-      const state = stateRef.current;
-      if (smooth) {
-        const previous = listRef.current;
-        const s = settingsRef.current;
-        if (!s.reduced && previous !== next) {
-          setLeaving(current => ({
-            id: (current?.id || 0) + 1,
-            items: previous,
-            delays: previous.map((_, index) => (Math.abs(wrap(index * s.step + state.angle)) / 180) * SWAP_SPREAD)
-          }));
-        }
-        setList(next);
-        wakeRef.current();
-        return;
-      }
-      state.introDone = false;
-      state.intro = null;
-      setReady(true);
-      wakeRef.current();
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [sourcesKey]);
+    const state = stateRef.current;
 
+    if (smooth) {
+      const previous = listRef.current;
+      const s = settingsRef.current;
+      if (!s.reduced && previous !== next) {
+        setLeaving(current => ({
+          id: (current?.id || 0) + 1,
+          items: previous,
+          delays: previous.map((_, index) => (Math.abs(wrap(index * s.step + state.angle)) / 180) * SWAP_SPREAD)
+        }));
+      }
+      setList(next);
+      wakeRef.current();
+      return undefined;
+    }
+
+    setLeaving(null);
+    setList(next);
+    state.introDone = false;
+    state.intro = null;
+    setReady(true);
+    wakeRef.current();
+
+    const sources = next.slice(0, 16).map(item => item.previewSrc || item.src);
+    for (const src of sources) {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = src;
+    }
+
+    return undefined;
+  }, [sourcesKey]);
   useEffect(() => {
     if (!leaving) return undefined;
     const timer = setTimeout(() => setLeaving(null), SWAP_LENGTH + SWAP_SPREAD + 80);
@@ -636,17 +626,6 @@ const CircularCarousel = ({
     });
     resize.observe(root);
 
-    const io = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible) wake();
-      else {
-        cancelAnimationFrame(raf);
-        raf = 0;
-        state.last = 0;
-      }
-    });
-    io.observe(root);
-
     const onWheel = event => {
       const s = settingsRef.current;
       if (!s.draggable) return;
@@ -675,7 +654,6 @@ const CircularCarousel = ({
     return () => {
       cancelAnimationFrame(raf);
       resize.disconnect();
-      io.disconnect();
       clearTimeout(state.wheelTimer);
       root.removeEventListener('wheel', onWheel);
       document.removeEventListener('visibilitychange', onVisibility);

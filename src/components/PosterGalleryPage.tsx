@@ -67,18 +67,19 @@ function PosterGalleryPage({ initialIndex = 0, onOpenPosterImage }: PosterGaller
           className="poster-circular-carousel"
           items={posterItems}
           preset="cylinder"
-          intro="rise"
+          intro="none"
           cardWidth={268}
           aspectRatio={3 / 4}
           gap={58}
+          curve={0}
           autoplay="drift"
-          speed={6}
+          speed={4}
           draggable
           momentum={0.65}
           snap
           pauseOnHover
           focusOnClick
-          parallax={0.3}
+          parallax={0.12}
           depthFade={0.58}
           fadeColor="#070a08"
           innerShade={0.34}
