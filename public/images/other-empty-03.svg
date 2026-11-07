@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b0d0b"/><stop offset="0.48" stop-color="#19221b"/><stop offset="1" stop-color="#090c0a"/></linearGradient></defs>
+  <rect width="600" height="400" fill="url(#a)"/>
+  <g fill="none" stroke="#d9e8cd" stroke-opacity="0.13"><rect x="38" y="38" width="524" height="324" rx="22"/><path d="M300 74v252M174 200h252"/><circle cx="300" cy="200" r="118"/><circle cx="300" cy="200" r="74"/><circle cx="300" cy="200" r="6" fill="#b9a16c" fill-opacity="0.5" stroke="none"/></g>
+  <text x="50" y="330" fill="#d9e8cd" fill-opacity="0.62" font-family="Georgia,serif" font-size="28" letter-spacing="7">暂无作品</text>
+  <text x="52" y="360" fill="#b9a16c" fill-opacity="0.58" font-family="Arial,sans-serif" font-size="12" letter-spacing="4">TO BE CONTINUED</text>
+</svg>

@@ -1,0 +1,34 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# Local tooling and generated artifacts
+.pnpm-store/
+.planning/
+.taste-skill/
+.ref-analysis-1231/
+outputs/
+.codex-app-doc.html
+.codex-doc-search.html
+唐俊贤_个人简历与作品集_文字搭建方案.md
+.resize_222_cover.py

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a0e0c"/><stop offset="0.55" stop-color="#1b281f"/><stop offset="1" stop-color="#0b0e0c"/></linearGradient><radialGradient id="g" cx="0.68" cy="0.28" r="0.62"><stop stop-color="#b9a16c" stop-opacity="0.2"/><stop offset="1" stop-color="#b9a16c" stop-opacity="0"/></radialGradient></defs>
+  <rect width="600" height="400" fill="url(#a)"/><rect width="600" height="400" fill="url(#g)"/>
+  <g fill="none" stroke="#d9e8cd" stroke-opacity="0.14"><rect x="38" y="38" width="524" height="324" rx="22"/><circle cx="430" cy="132" r="78"/><circle cx="430" cy="132" r="48"/><path d="M72 300 190 170l78 82 62-58 164 106"/></g>
+  <text x="50" y="330" fill="#d9e8cd" fill-opacity="0.62" font-family="Georgia,serif" font-size="28" letter-spacing="7">暂无作品</text>
+  <text x="52" y="360" fill="#b9a16c" fill-opacity="0.58" font-family="Arial,sans-serif" font-size="12" letter-spacing="4">ARCHIVE IN PROGRESS</text>
+</svg>

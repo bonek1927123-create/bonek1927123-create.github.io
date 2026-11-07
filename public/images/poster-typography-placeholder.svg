@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1100" viewBox="0 0 800 1100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9e8cd"/>
+      <stop offset="0.62" stop-color="#a8b39f"/>
+      <stop offset="1" stop-color="#7f9978"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1100" fill="url(#bg)"/>
+  <rect x="52" y="52" width="696" height="996" rx="28" fill="none" stroke="#10160f" stroke-opacity="0.18"/>
+  <text x="400" y="440" text-anchor="middle" fill="#10160f" font-family="Georgia,serif" font-size="230" letter-spacing="-30">K</text>
+  <text x="400" y="548" text-anchor="middle" fill="#10160f" fill-opacity="0.34" font-family="Arial,sans-serif" font-size="17" letter-spacing="11">THE KILLER AMONG US</text>
+  <path d="M146 650h508M146 680h508" stroke="#10160f" stroke-opacity="0.22"/>
+  <text x="400" y="830" text-anchor="middle" fill="#10160f" font-family="Georgia,serif" font-size="54" letter-spacing="8">TYPOGRAPHY</text>
+  <text x="400" y="890" text-anchor="middle" fill="#26332a" font-family="Arial,sans-serif" font-size="17" letter-spacing="9">TITLE SYSTEM / 03</text>
+  <text x="400" y="1010" text-anchor="middle" fill="#10160f" fill-opacity="0.38" font-family="Arial,sans-serif" font-size="14" letter-spacing="7">CONTENT TO BE ADDED</text>
+</svg>

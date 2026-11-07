@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1100" viewBox="0 0 800 1100">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101713"/>
+      <stop offset="0.52" stop-color="#26342b"/>
+      <stop offset="1" stop-color="#090d0a"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3d89a"/>
+      <stop offset="1" stop-color="#a77b45"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1100" fill="url(#sky)"/>
+  <rect x="52" y="52" width="696" height="996" rx="28" fill="none" stroke="#d9e8cd" stroke-opacity="0.22"/>
+  <circle cx="400" cy="405" r="148" fill="url(#sun)" fill-opacity="0.84"/>
+  <path d="M0 670 152 562l122 87 104-142 186 146 100-88 136 92v192H0Z" fill="#111713"/>
+  <path d="M52 804h696" stroke="#c9ab70" stroke-opacity="0.32"/>
+  <path d="M105 852h590M154 887h492M208 922h384" stroke="#d9e8cd" stroke-opacity="0.1"/>
+  <text x="400" y="974" text-anchor="middle" fill="#e8e2d4" font-family="Georgia,serif" font-size="58" letter-spacing="10">SCENE</text>
+  <text x="400" y="1027" text-anchor="middle" fill="#c9ab70" font-family="Arial,sans-serif" font-size="17" letter-spacing="8">ATMOSPHERE / 02</text>
+</svg>

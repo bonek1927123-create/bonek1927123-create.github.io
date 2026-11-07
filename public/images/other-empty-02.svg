@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs><linearGradient id="a" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#080b09"/><stop offset="0.5" stop-color="#202a21"/><stop offset="1" stop-color="#0b0e0c"/></linearGradient><radialGradient id="g" cx="0.2" cy="0.2" r="0.72"><stop stop-color="#7f9978" stop-opacity="0.2"/><stop offset="1" stop-color="#7f9978" stop-opacity="0"/></radialGradient></defs>
+  <rect width="600" height="400" fill="url(#a)"/><rect width="600" height="400" fill="url(#g)"/>
+  <g fill="none" stroke="#d9e8cd" stroke-opacity="0.13"><rect x="38" y="38" width="524" height="324" rx="22"/><path d="M70 98h460M70 202h460M70 306h460M150 60v280M300 60v280M450 60v280"/><path d="m96 320 112-122 88 72 92-132 116 182"/></g>
+  <text x="50" y="330" fill="#d9e8cd" fill-opacity="0.62" font-family="Georgia,serif" font-size="28" letter-spacing="7">暂无作品</text>
+  <text x="52" y="360" fill="#b9a16c" fill-opacity="0.58" font-family="Arial,sans-serif" font-size="12" letter-spacing="4">OTHER WORKS / COMING SOON</text>
+</svg>
