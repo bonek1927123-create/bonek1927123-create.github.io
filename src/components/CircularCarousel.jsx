@@ -76,7 +76,7 @@ const PRESETS = {
     spread: 1,
     inward: false,
     billboard: false,
-    backfaces: true,
+    backfaces: false,
     window: 0
   },
   orbit: {
@@ -115,7 +115,7 @@ const PRESETS = {
 };
 
 const INTRO_LENGTH = { assemble: 1500, rise: 1400, spin: 1800, none: 0 };
-const TILES = 8;
+const TILES = 3;
 const OVERLAP = 2.5;
 const DRAG_THRESHOLD = 5;
 const SPRING = 118;
@@ -393,6 +393,7 @@ const CircularCarousel = ({
     if (!root || !stage || !camera || !ring) return undefined;
     const state = stateRef.current;
     let raf = 0;
+    let lastDraw = 0;
     let visible = true;
 
     const nearest = angle => Math.round(angle / settingsRef.current.step) * settingsRef.current.step;
@@ -602,6 +603,11 @@ const CircularCarousel = ({
 
     const frame = now => {
       raf = 0;
+      if (now - lastDraw < 1000 / 30) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
+      lastDraw = now;
       const s = settingsRef.current;
       const dt = state.last ? Math.min((now - state.last) / 1000, 0.05) : 1 / 60;
       state.last = now;
@@ -856,21 +862,20 @@ const CircularCarousel = ({
       <div
         key={`${back ? 'b' : 'f'}${tile.index}`}
         className="circular-carousel__tile"
+        data-back={back ? '' : undefined}
         style={{ ...box, transform: tile.move + (back ? flip : '') }}
         aria-hidden="true"
       >
         <div
           className="circular-carousel__frame"
-          style={{ height: axis === 'x' ? size : cardH, borderRadius: frameRadius }}
+          style={{
+            height: axis === 'x' ? size : cardH,
+            borderRadius: frameRadius,
+            backgroundImage: `url("${item.src}")`,
+            backgroundSize: `${cardW}px ${cardH}px`,
+            backgroundPosition: axis === 'x' ? `0px ${-offset}px` : `${-offset}px 0px`
+          }}
         >
-          <img
-            className="circular-carousel__photo"
-            src={item.src}
-            alt=""
-            draggable={false}
-            decoding="async"
-            style={photoStyle}
-          />
           {gone && (
             <img
               key={`leaving-${leaving.id}`}
@@ -882,8 +887,6 @@ const CircularCarousel = ({
               style={{ ...photoStyle, animationDelay: `${Math.round(leaving.delays[index])}ms` }}
             />
           )}
-          {back && <div className="circular-carousel__inner" />}
-          <div className="circular-carousel__shade" />
         </div>
       </div>
     );

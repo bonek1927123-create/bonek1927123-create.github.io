@@ -11,6 +11,7 @@
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
+  contain: layout paint style;
 }
 
 .circular-carousel[data-axis='x'] {
@@ -64,7 +65,9 @@
   width: 0;
   height: 0;
   transform-style: preserve-3d;
+  will-change: transform;
 }
+
 
 .circular-carousel__camera {
   position: relative;
