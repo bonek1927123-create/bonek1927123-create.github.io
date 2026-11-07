@@ -278,7 +278,7 @@ function DetailOverlay({
                 onFocusCapture={alignResumeDocumentTop}
                 tabIndex={0}
               >
-                <img src="/documents/resume2.jpg" alt="唐俊贤完整个人简历" />
+                <img src="/documents/resume3.jpg" alt="唐俊贤完整个人简历" />
               </div>
             </StarCard>
             <StarCard className="resume-sidebar-star" radius={20} glow={0.24} duration={9}>
@@ -290,7 +290,7 @@ function DetailOverlay({
                   </button>
                 </MagneticControl>
                 <MagneticControl>
-                  <a className="button button--ghost" href="/documents/resume2.jpg" download="唐俊贤_简历2.jpg">
+                  <a className="button button--ghost" href="/documents/resume3.jpg" download="唐俊贤_简历3.jpg">
                     <ParticleLabel text="下载简历图片" />
                   </a>
                 </MagneticControl>
@@ -324,7 +324,7 @@ function DetailOverlay({
             </div>
           </header>
           <div className="resume-raw-canvas">
-            <img src="/documents/resume2.jpg" alt="唐俊贤完整个人简历原图" />
+            <img src="/documents/resume3.jpg" alt="唐俊贤完整个人简历原图" />
           </div>
         </div>
       )

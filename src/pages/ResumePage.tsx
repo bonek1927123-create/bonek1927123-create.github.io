@@ -104,7 +104,7 @@ function ResumePage({ onOpenResume }: ResumePageProps) {
                 >
                   <StarCard className="resume-profile-star" radius={40} glow={0.4} duration={8.5}>
                     <ProfileCard
-                      avatarUrl="/documents/resume2-card.jpg"
+                      avatarUrl="/documents/resume3-card.jpg"
                       name="唐俊贤"
                       title="AIGC 视频制作 · 全流程创作"
                       handle="RESUME CARD · 个人简历"
@@ -135,7 +135,7 @@ function ResumePage({ onOpenResume }: ResumePageProps) {
                 tilt={1.5}
                 scale={1.025}
               >
-                <a className="resume-profile-panel__download" href="/documents/resume2.jpg" download="唐俊贤_简历2.jpg">
+                <a className="resume-profile-panel__download" href="/documents/resume3.jpg" download="唐俊贤_简历3.jpg">
                   <ParticleLabel text="下载简历图片" />
                 </a>
               </Magnet>
