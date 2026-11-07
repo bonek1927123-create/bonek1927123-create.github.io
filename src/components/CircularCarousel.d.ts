@@ -2,6 +2,7 @@ import type { CSSProperties, ReactElement } from 'react'
 
 export type CircularCarouselItem = {
   src: string
+  previewSrc?: string
   alt?: string
   title?: string
   subtitle?: string

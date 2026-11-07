@@ -342,7 +342,7 @@ const CircularCarousel = ({
       setLeaving(null);
       setList(next);
     }
-    const sources = next.slice(0, 16).map(item => item.src);
+    const sources = next.slice(0, 16).map(item => item.previewSrc || item.src);
     const load = src =>
       new Promise(resolve => {
         const image = new Image();
@@ -351,7 +351,7 @@ const CircularCarousel = ({
         image.onerror = resolve;
         image.src = src;
       });
-    const timeout = new Promise(resolve => setTimeout(resolve, 2400));
+    const timeout = new Promise(resolve => setTimeout(resolve, 800));
     Promise.race([Promise.all(sources.map(load)), timeout]).then(() => {
       if (cancelled) return;
       const state = stateRef.current;
@@ -858,6 +858,7 @@ const CircularCarousel = ({
         : { left: -offset, top: 0, width: cardW, height: cardH };
     const flip = axis === 'x' ? ' rotateX(180deg)' : ' rotateY(180deg)';
     const gone = leaving?.items[index];
+    const tileSrc = item.previewSrc || item.src;
     return (
       <div
         key={`${back ? 'b' : 'f'}${tile.index}`}
@@ -871,7 +872,7 @@ const CircularCarousel = ({
           style={{
             height: axis === 'x' ? size : cardH,
             borderRadius: frameRadius,
-            backgroundImage: `url("${item.src}")`,
+            backgroundImage: `url("${tileSrc}")`,
             backgroundSize: `${cardW}px ${cardH}px`,
             backgroundPosition: axis === 'x' ? `0px ${-offset}px` : `${-offset}px 0px`
           }}
@@ -880,7 +881,7 @@ const CircularCarousel = ({
             <img
               key={`leaving-${leaving.id}`}
               className="circular-carousel__photo circular-carousel__photo--leaving"
-              src={gone.src}
+              src={gone.previewSrc || gone.src}
               alt=""
               draggable={false}
               decoding="async"

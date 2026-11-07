@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import DepthTitle from '../components/DepthTitle'
 import Folder, { type FolderItem } from '../components/Folder'
 import Reveal from '../components/Reveal'
+import { posterItems } from '../data/posters'
 
 type PreviewCardKind = 'poster' | 'film' | 'more'
 
@@ -93,6 +94,7 @@ function PreviewPage({
   const [folderOpen, setFolderOpen] = useState(false)
   const [folderRevision, setFolderRevision] = useState(0)
   const wasPreviewDetailOpen = useRef(false)
+  const posterPreviewsPreloaded = useRef(false)
   const folderStageRef = useRef<HTMLElement>(null)
 
   const scrollFolderToCenter = () => {
@@ -113,9 +115,23 @@ function PreviewPage({
     })
   }
 
+  const preloadPosterPreviews = () => {
+    if (posterPreviewsPreloaded.current) return
+    posterPreviewsPreloaded.current = true
+
+    for (const poster of posterItems) {
+      const image = new Image()
+      image.decoding = 'async'
+      image.src = poster.previewSrc || poster.src
+    }
+  }
+
   const handleFolderOpenChange = (open: boolean) => {
     setFolderOpen(open)
-    if (open) scheduleFolderCentering()
+    if (open) {
+      preloadPosterPreviews()
+      scheduleFolderCentering()
+    }
   }
 
   useEffect(() => {
@@ -152,7 +168,10 @@ function PreviewPage({
       <section ref={folderStageRef} className="preview-folder-stage" aria-label="作品预览文件夹区域">
         <div
           className="preview-folder-interaction"
-          onPointerEnter={scheduleFolderCentering}
+          onPointerEnter={() => {
+            scheduleFolderCentering()
+            preloadPosterPreviews()
+          }}
           onFocusCapture={scheduleFolderCentering}
         >
           <Folder
