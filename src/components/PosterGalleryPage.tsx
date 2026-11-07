@@ -72,14 +72,15 @@ function PosterGalleryPage({ initialIndex = 0, onOpenPosterImage }: PosterGaller
           aspectRatio={3 / 4}
           gap={58}
           curve={0}
-          autoplay="drift"
+          autoplay="step"
           speed={4}
+          interval={4}
           draggable
           momentum={0.65}
           snap
           pauseOnHover
           focusOnClick
-          parallax={0.12}
+          parallax={0.08}
           depthFade={0.58}
           fadeColor="#070a08"
           innerShade={0.34}

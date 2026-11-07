@@ -510,16 +510,7 @@ const CircularCarousel = ({
         busy = busy || cruise !== 0 || Math.abs(state.velocity) > 0.01 || state.target !== null;
       }
 
-      if (s.autoplay === 'step' && !paused && !state.intro && state.introDone) {
-        if (!state.stepAt) state.stepAt = now + s.interval * 1000;
-        if (now >= state.stepAt) {
-          state.target = (state.target ?? nearest(state.angle)) + s.step * state.dir;
-          state.stepAt = now + s.interval * 1000;
-        }
-        busy = true;
-      } else {
-        state.stepAt = 0;
-      }
+      state.stepAt = 0;
 
       if (now < state.holdUntil) busy = true;
 
@@ -688,6 +679,18 @@ const CircularCarousel = ({
     wakeRef.current();
   }, []);
 
+  useEffect(() => {
+    if (autoplay !== 'step' || reduced) return undefined;
+
+    const timer = window.setInterval(() => {
+      const state = stateRef.current;
+      const s = settingsRef.current;
+      if (document.hidden || state.drag || state.press || (s.pauseOnHover && state.hover)) return;
+      stepBy(1);
+    }, Math.max(0.5, interval) * 1000);
+
+    return () => window.clearInterval(timer);
+  }, [autoplay, interval, pauseOnHover, reduced, stepBy]);
   const updatePointer = event => {
     const rect = rootRef.current.getBoundingClientRect();
     const pointer = stateRef.current.pointer;
