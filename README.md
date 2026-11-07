@@ -22,17 +22,18 @@ pnpm preview
 
 ## 部署
 
-项目使用 Vercel 长期部署方案：
+项目使用 GitHub Pages 长期自动部署方案：
 
 - Node.js：22
 - Install Command：`pnpm install --frozen-lockfile`
 - Build Command：`pnpm build`
 - Output Directory：`dist`
 
-推送到 GitHub 主分支后，由 Vercel 自动构建和发布。
+推送到 GitHub `main` 分支后，GitHub Actions 会自动构建并发布网站。仓库中的 `vercel.json` 保留，后续也可以无缝迁移到 Vercel。
 
 ## 素材说明
 
 - 页面图片：`public/images/`
 - 首页视频：`public/videos/`
 - 简历文件：`public/documents/`
+
